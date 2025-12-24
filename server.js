@@ -1,7 +1,7 @@
 const express=require("express")
 const app=express()
-//sneha-commnet-out
-// const videoRouter=require("./routes/videos")
+
+const videoRouter=require("./routes/videos")
 
 const {authUser,isAdmin}=require("./utils/auth")
 //aparna-student.js
@@ -17,7 +17,7 @@ app.use(authUser)
 // app.use("/courses",courseRouter)
 app.use("/common",commonRouter)
 // app.use("/students",studentRouter)
-// /app.use("/videos",videoRouter)
+app.use("/videos",videoRouter)
 
 
 app.listen(4000,'10.49.246.108',()=>{
