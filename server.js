@@ -5,7 +5,7 @@ const videoRouter=require("./routes/videos")
 
 const {authUser,isAdmin}=require("./utils/auth")
 
-// const studentRouter=require("./routes/students")
+const studentRouter=require("./routes/students")
 const courseRouter=require("./routes/courses")
 const commonRouter=require("./routes/common")
 
@@ -15,7 +15,7 @@ app.use(authUser)
 
 app.use("/courses",courseRouter)
 app.use("/common",commonRouter)
-// app.use("/students",studentRouter)
+app.use("/students",studentRouter)
 app.use("/videos",videoRouter)
 
 
