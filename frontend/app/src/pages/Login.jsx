@@ -8,23 +8,53 @@ function Login() {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const navigate=useNavigate()
-    const login=async()=>{
-      if(email==='')
-        toast.warn('email must be entered')
-      else if(password==='')
-        toast.warn('password should be entered')
-      else{
-        const result=await loginUser(email,password)
-        if(result.status=='success'){
-          navigate('/')
-          toast.success('Login successful')
-        }
-        else{
-          toast.error(result.error)
-        }
-      }
+    // const login=async()=>{
+    //   if(email==='')
+    //     toast.warn('email must be entered')
+    //   else if(password==='')
+    //     toast.warn('password should be entered')
+    //   else{
+    //     const result=await loginUser(email,password)
+    //     if(result.status=='success'){
+    //       navigate('/')
+    //       toast.success('Login successful')
+    //     }
+    //     else{
+    //       toast.error("Invalid email or password")
+    //     }
+    //   }
         
+    // }
+    const login = async () => {
+  if (!email.trim()) {
+    toast.warn('Email must be entered');
+    return;
+  }
+
+  if (!password) {
+    toast.warn('Password must be entered');
+    return;
+  }
+
+  try {
+    const result = await loginUser(email, password);
+
+    if (result?.status === 'success') {
+      toast.success('Login successful');
+
+      // slight delay so toast is visible
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
+    } else {
+      toast.error('Invalid email or password');
     }
+  } catch (error) {
+    console.error(error);
+    toast.error('Something went wrong. Please try again.');
+  }
+};
+
   return (
        <>
        <Navbar/>
@@ -51,7 +81,7 @@ function Login() {
         </div>
 
         <div className="d-grid">
-          <button className="btn btn-info text-white"> Login</button>
+          <button className="btn btn-info text-white" onClick={login}> Login</button>
         </div>
 
       </div>

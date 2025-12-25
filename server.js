@@ -19,6 +19,6 @@ app.use("/students",studentRouter)
 app.use("/videos",videoRouter)
 
 
-app.listen(4000,'10.49.246.108',()=>{
+app.listen(4000,'192.168.1.100',()=>{
     console.log("Server started at port 4000")
 })
