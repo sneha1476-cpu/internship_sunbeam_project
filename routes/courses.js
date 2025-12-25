@@ -16,6 +16,14 @@ router.get("/get",isAdmin,(req,res)=>{
     })
 })
 
+router.get("/get-active-courses",isAdmin,(req,res)=>{
+   const sql = `SELECT * FROM courses WHERE start_date >= CURDATE()`;
+
+    pool.query(sql,(error,data)=>{
+        res.send(result.createResult(error,data))
+    })
+})
+
 // POST
 router.post("/post",isAdmin,(req,res)=>{
     const {course_name,description,fees,start_date,end_date,video_expire_days}=req.body

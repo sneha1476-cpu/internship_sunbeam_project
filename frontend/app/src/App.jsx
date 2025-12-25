@@ -3,7 +3,9 @@ import Navbar from './components/Navbar'
 import { Route, Routes } from 'react-router'
 import Login from './pages/Login'
 import {ToastContainer} from 'react-toastify'
-import Dashboard from './pages/Dashboard'
+
+
+import Home from './pages/Home'
 function App() {
  
 
@@ -11,7 +13,7 @@ function App() {
     <>
  
     <Routes>
-      <Route path='/' element={<Dashboard/>}/>
+      <Route path='/' element={<Home/>}/>
       <Route path='/login' element={<Login/>}/>
     </Routes>
     <ToastContainer/>
