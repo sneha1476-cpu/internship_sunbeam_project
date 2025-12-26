@@ -4,10 +4,9 @@ const cors=require('cors')
 const videoRouter=require("./routes/videos")
 
 const {authUser,isAdmin}=require("./utils/auth")
-//aparna-student.js
 
-// const studentRouter=require("./routes/students")
-// const courseRouter=require("./routes/courses")
+const studentRouter=require("./routes/students")
+const courseRouter=require("./routes/courses")
 const commonRouter=require("./routes/common")
 
 //middlewares
@@ -15,9 +14,9 @@ app.use(express.json())
 app.use(cors())
 app.use(authUser)
 
-// app.use("/courses",courseRouter)
+app.use("/courses",courseRouter)
 app.use("/common",commonRouter)
-// app.use("/students",studentRouter)
+app.use("/students",studentRouter)
 app.use("/videos",videoRouter)
 
 
