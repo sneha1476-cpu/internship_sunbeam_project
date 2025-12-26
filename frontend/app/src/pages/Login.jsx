@@ -4,56 +4,37 @@ import {Link, useNavigate} from 'react-router'
 import {toast} from 'react-toastify'
 import { loginUser } from '../services/userServices'
 
+
 function Login() {
     const [email,setEmail]=useState('')
     const [password,setPassword]=useState('')
     const navigate=useNavigate()
-    // const login=async()=>{
-    //   if(email==='')
-    //     toast.warn('email must be entered')
-    //   else if(password==='')
-    //     toast.warn('password should be entered')
-    //   else{
-    //     const result=await loginUser(email,password)
-    //     if(result.status=='success'){
-    //       navigate('/')
-    //       toast.success('Login successful')
-    //     }
-    //     else{
-    //       toast.error("Invalid email or password")
-    //     }
-    //   }
-        
-    // }
-    const login = async () => {
-  if (!email.trim()) {
-    toast.warn('Email must be entered');
-    return;
-  }
+ 
 
-  if (!password) {
-    toast.warn('Password must be entered');
-    return;
-  }
-
-  try {
-    const result = await loginUser(email, password);
-
-    if (result?.status === 'success') {
-      toast.success('Login successful');
-
-      // slight delay so toast is visible
-      setTimeout(() => {
-        navigate('/');
-      }, 1000);
-    } else {
-      toast.error('Invalid email or password');
-    }
-  } catch (error) {
-    console.error(error);
-    toast.error('Something went wrong. Please try again.');
-  }
-};
+     const login = async (event) => {
+        console.log('Sign in button clicked')
+        console.log(`email - ${email}`)
+        console.log(`password - ${password}`)
+        if (email == '')
+            toast.warn('email must be entered')
+        else if (password == '')
+            toast.warn('password must be entered')
+        else {
+            const result = await loginUser(email, password)
+            console.log(result)
+            if (result.status == 'success') {
+              console.log("login")
+                // dynamic navigation -> useNavigate()
+                navigate('/home')
+                
+                toast.success('Login successful')
+            }
+            else
+                toast.error(result.error)
+        }
+    }    
+  
+  
 
   return (
        <>
@@ -99,3 +80,60 @@ function Login() {
 export default Login
 
 
+//  import React, { useState } from 'react'
+// import { Link, useNavigate } from 'react-router'
+// import { loginUser } from '../services/userServices'
+// import { toast } from 'react-toastify'
+
+// function Login() {
+//     // Destructuring of array
+//     const [email, setEmail] = useState('') // email
+//     const [password, setPassword] = useState('')// password
+//     const navigate = useNavigate()
+
+//     const signin = async (event) => {
+//         console.log('Sign in button clicked')
+//         console.log(`email - ${email}`)
+//         console.log(`password - ${password}`)
+//         if (email == '')
+//             toast.warn('email must be entered')
+//         else if (password == '')
+//             toast.warn('password must be entered')
+//         else {
+//             const result = await loginUser(email, password)
+//             console.log(result)
+//             if (result.status == 'sucess') {
+//               sessionStorage.setItem('token', result.data.token)
+//                 // dynamic navigation -> useNavigate()
+//                 navigate('/home')
+//                 toast.success('Login successful')
+//             }
+//             else
+//                 toast.error(result.error)
+//         }
+//     }
+
+//     return (
+//         <div className='container w-50'>
+//             <div className=" mt-3 mb-3">
+//                 <label for="inputEmail" className="form-label">Email</label>
+//                 <input type="email" className="form-control" id="inputEmail" placeholder="Enter email" onChange={event => setEmail(event.target.value)} />
+//             </div>
+
+//             <div className="mb-3">
+//                 <label for="inputPassword" className="form-label">Password</label>
+//                 <input type="password" className="form-control" id="inputPassword" placeholder="Enter password" onChange={e => setPassword(e.target.value)} />
+//             </div>
+
+//             <div className="mb-3">
+//                 <button className="btn btn-success" onClick={signin}>Signin</button>
+//             </div>
+
+//             <div>
+//                 Don't have an account? then to register <Link to='/register' >Click Here</Link>
+//             </div>
+//         </div>
+//     )
+// }
+
+// export default Login

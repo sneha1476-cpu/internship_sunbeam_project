@@ -1,6 +1,7 @@
 const express=require("express")
 const app=express()
 const cors=require('cors')
+
 const videoRouter=require("./routes/videos")
 
 const {authUser,isAdmin}=require("./utils/auth")
@@ -9,7 +10,7 @@ const studentRouter=require("./routes/students")
 const courseRouter=require("./routes/courses")
 const commonRouter=require("./routes/common")
 
-//middlewares
+// middlewares
 app.use(express.json())
 app.use(cors())
 app.use(authUser)

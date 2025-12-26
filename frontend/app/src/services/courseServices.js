@@ -5,3 +5,4 @@ export async function getActiveCourses(){
     const response=await axios.get(URL)
     return response.data
 }
+
