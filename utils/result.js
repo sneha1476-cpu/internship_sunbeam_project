@@ -1,7 +1,7 @@
 function createResult(error,data){
     const result={}
     if(data){
-        result.status="sucess"
+        result.status="success"
         result.data=data
     }
     else{
