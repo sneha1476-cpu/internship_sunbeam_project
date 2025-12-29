@@ -1,28 +1,27 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import { Route, Routes } from 'react-router'
-import Login from './pages/Login'
-import {ToastContainer} from 'react-toastify'
+import { Routes, Route, Navigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Login from "./pages/Login";
 
-import Home from './pages/Home'
-import About from './pages/About'
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
- 
-
   return (
     <>
- 
-    <Routes>
-      <Route path='/home' element={<Home/>}/>
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/about' element={<About/>}/>
-    </Routes>
-    <ToastContainer/>
-   
-     
+      <Routes>
+        {/* Default route */}
+        <Route path="/" element={<Navigate to="/Home" />} />
+
+        <Route path="/Home" element={<Home />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Login" element={<Login />} />
+      </Routes>
+
+      <ToastContainer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
