@@ -1,10 +1,21 @@
-import React from "react"
-import Navbar from "../components/Navbar"
-import sunbeamHinjwadi from "../assets/sunbeam_hinjwdi.jpeg"
+import React from "react";
+import Navbar from "../components/Navbar";
+
+/* Vite-safe image URLs */
+const sunbeamHinjwadi = new URL(
+  "../assets/sunbeam_hinjwadi.jpg",
+  import.meta.url
+).href;
+
+const sunbeamMarket = new URL(
+  "../assets/sunbeam_marketyard.jpg",
+  import.meta.url
+).href;
 
 function About() {
   return (
     <>
+      {/* Navbar */}
       <Navbar />
 
       {/* Hero Section */}
@@ -15,7 +26,7 @@ function About() {
         </p>
       </div>
 
-      {/* Carousel */}
+      {/* Carousel Section */}
       <div className="container my-5">
         <div
           id="sunbeamCarousel"
@@ -23,32 +34,30 @@ function About() {
           data-bs-ride="carousel"
         >
           <div className="carousel-inner rounded">
+
+            {/* Slide 1 */}
             <div className="carousel-item active">
               <img
-                src="https://images.pexels.com/photos/3184313/pexels-photo-3184313.jpeg"
+                src={sunbeamHinjwadi}
                 className="d-block w-100"
-                alt="Campus"
+                alt="Sunbeam Hinjawadi Campus"
                 style={{ height: "400px", objectFit: "cover" }}
               />
             </div>
+
+            {/* Slide 2 */}
             <div className="carousel-item">
               <img
-                src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
+                src={sunbeamMarket}
                 className="d-block w-100"
-                alt="Classroom"
+                alt="Sunbeam Market Yard Campus"
                 style={{ height: "400px", objectFit: "cover" }}
               />
             </div>
-            <div className="carousel-item">
-              <img
-                src="https://images.pexels.com/photos/1181393/pexels-photo-1181393.jpeg"
-                className="d-block w-100"
-                alt="Training"
-                style={{ height: "400px", objectFit: "cover" }}
-              />
-            </div>
+
           </div>
 
+          {/* Controls */}
           <button
             className="carousel-control-prev"
             type="button"
@@ -71,59 +80,26 @@ function About() {
 
       {/* About Content */}
       <div className="container mb-5">
-        <div className="row mb-4">
-          <div className="col text-center">
-            <h2 className="fw-bold">Who We Are</h2>
-            <p className="text-muted mt-3">
-              Sunbeam Institute is a premier training organization focused on
-              delivering high-quality education and skill development programs.
-              We help students and professionals stay competitive by offering
-              industry-relevant courses, experienced faculty, and practical
-              learning.
-            </p>
-          </div>
-        </div>
+        <h2 className="text-center fw-bold mb-4">Who We Are</h2>
+        <p className="text-center text-muted">
+          Sunbeam Institute delivers industry-focused technical training with
+          real-world learning and expert faculty.
+        </p>
 
-        {/* Mission & Vision */}
-        <div className="row text-center mb-5">
-          <div className="col-md-6 mb-3">
-            <div className="card shadow h-100">
-              <div className="card-body">
-                <h4 className="card-title fw-bold">Our Mission</h4>
-                <p className="card-text">
-                  To provide world-class technical and professional training
-                  that transforms learners into industry-ready professionals.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-6 mb-3">
-            <div className="card shadow h-100">
-              <div className="card-body">
-                <h4 className="card-title fw-bold">Our Vision</h4>
-                <p className="card-text">
-                  To be the most trusted institute for career-oriented learning
-                  and professional excellence.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Branches */}
-        <h2 className="text-center fw-bold mb-4">Our Branches</h2>
+        <h2 className="text-center fw-bold my-4">Our Branches</h2>
 
         <div className="row g-4 justify-content-center">
+
+          {/* Market Yard Card */}
           <div className="col-md-4">
-            <div className="card h-100 shadow text-center">
+            <div className="card shadow">
               <img
-                src={sunbeamHinjwadi}
+                src={sunbeamMarket}
                 className="card-img-top"
-                alt="Market Yard"
+                alt="Market Yard Campus"
                 style={{ height: "200px", objectFit: "cover" }}
               />
-              <div className="card-body">
+              <div className="card-body text-center">
                 <h5 className="fw-bold">Market Yard, Pune</h5>
                 <p className="text-muted">
                   Sunbeam Chambers, Gultekdi, Pune – 411037
@@ -132,15 +108,16 @@ function About() {
             </div>
           </div>
 
+          {/* Hinjawadi Card */}
           <div className="col-md-4">
-            <div className="card h-100 shadow text-center">
+            <div className="card shadow">
               <img
-                src="https://images.pexels.com/photos/3184299/pexels-photo-3184299.jpeg"
+                src={sunbeamHinjwadi}
                 className="card-img-top"
-                alt="Hinjawadi"
+                alt="Hinjawadi Campus"
                 style={{ height: "200px", objectFit: "cover" }}
               />
-              <div className="card-body">
+              <div className="card-body text-center">
                 <h5 className="fw-bold">Hinjawadi, Pune</h5>
                 <p className="text-muted">
                   Rajiv Gandhi Infotech Park, Phase 2, Pune – 411057
@@ -148,6 +125,7 @@ function About() {
               </div>
             </div>
           </div>
+
         </div>
       </div>
 
@@ -158,7 +136,7 @@ function About() {
         </p>
       </footer>
     </>
-  )
+  );
 }
 
-export default About
+export default About;
