@@ -8,11 +8,12 @@
 
 /* Top Bar */
 .top-bar {
-  background-color: #035590;
-  color: white;
+  background-color: #ff8c00; /* ORANGE BLOCK */
+  color: white;              /* WHITE TEXT */
   padding: 6px 30px;
   font-size: 14px;
 }
+
 
 /* Header Main */
 .header-main {
@@ -71,11 +72,12 @@
 .instagram { color: #ef6df1; }
 
 /* Navbar */
+/* Navbar */
 .main-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #005c9c;
+  background-color: #ff8c00; /* ORANGE BLOCK */
   padding: 0 40px;
 }
 
@@ -85,11 +87,17 @@
 }
 
 .main-navbar li {
-  color: white;
+  color: white; /* WHITE TEXT */
   padding: 14px 20px;
   font-weight: bold;
   cursor: pointer;
 }
+
+.main-navbar li:hover {
+  background-color: #e68900; /* darker orange on hover */
+}
+
+
 
 /* Login Button */
 .nav-right {
