@@ -1,0 +1,119 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Top Bar */
+.top-bar {
+  background-color: #035590;
+  color: white;
+  padding: 6px 30px;
+  font-size: 14px;
+}
+
+/* Header Main */
+.header-main {
+  display: flex;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: white;
+}
+
+/* Logo */
+.logo img {
+  height: 55px;
+  object-fit: contain;
+}
+
+/* Marquee */
+.marquee-container {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0 20px;
+}
+
+.marquee-text {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  color: #005c9c;
+  padding-left: 100%;
+  animation: marquee 12s linear infinite;
+}
+
+/* Social Icons Container */
+.social-icons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Social Icons Common */
+.social-icons svg {
+  font-size: 26px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.social-icons svg:hover {
+  transform: scale(1.2);
+}
+
+/* REAL BRAND COLORS */
+.facebook { color: #1877f2; }
+.twitter { color: #1da1f2; }
+.linkedin { color: #0a66c2; }
+.youtube { color: #ff0000; }
+.instagram { color: #ef6df1; }
+
+/* Navbar */
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #005c9c;
+  padding: 0 40px;
+}
+
+.main-navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.main-navbar li {
+  color: white;
+  padding: 14px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Login Button */
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.login-btn {
+  background-color: white;
+  color:black;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background-color: #e68900;
+}
+
+/* Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}

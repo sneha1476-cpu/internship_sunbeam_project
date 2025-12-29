@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 import Home from "./pages/Home";
+
 import About from "./pages/About";
 import Login from "./pages/Login";
 
