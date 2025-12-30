@@ -9,14 +9,14 @@ const { error } = require("node:console")
 const { isAdmin } = require("../utils/auth")
 
 // GET
-router.get("/get",isAdmin,(req,res)=>{
+router.get("/get",(req,res)=>{
     const sql=`select *from courses order by start_date`
     pool.query(sql,(error,data)=>{
         res.send(result.createResult(error,data))
     })
 })
 
-router.get("/get-active-courses",isAdmin,(req,res)=>{
+router.get("/get-active-courses",(req,res)=>{
    const sql = `SELECT * FROM courses WHERE start_date >= CURDATE()`;
 
     pool.query(sql,(error,data)=>{
