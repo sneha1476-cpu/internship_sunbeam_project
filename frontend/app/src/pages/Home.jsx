@@ -5,9 +5,7 @@ const Home = () => {
   return (
     <>
       <Header />
-    {/* HERO SECTION */}
-    
-  <section className="text-white" style={{
+          {/* HERO SECTION */}<section className="text-white" style={{
   background: "linear-gradient(135deg, #0a4178, #3b2789)",
   minHeight: "75vh",
   display: "flex",
@@ -66,6 +64,8 @@ const Home = () => {
   </div>
 </section>
       <Body />
+      
+      {/* FEATURES SECTION */}
       <section className="container my-5">
         <h2 className="text-center fw-bold mb-5">
           Everything You Need in One Portal
