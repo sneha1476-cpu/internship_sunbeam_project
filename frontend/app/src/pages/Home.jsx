@@ -1,5 +1,5 @@
 import React from "react"
-import { useNavigate } from "react-router"
+import { Link, useNavigate } from "react-router-dom"
 
 function Home() {
   const navigate = useNavigate()
@@ -42,12 +42,12 @@ function Home() {
 
         {/* Buttons */}
         <div className="d-flex gap-2">
-          <a href="/login" className="btn btn-warning btn-lg fw-semibold">
+          <Link to="/login" className="btn btn-warning btn-lg fw-semibold">
             Get Started
-          </a>
-          <a href="/about" className="btn btn-outline-light btn-lg fw-semibold">
+          </Link>
+          <Link to="/about" className="btn btn-outline-light btn-lg fw-semibold">
             Explore
-          </a>
+          </Link>
         </div>
       </div>
 
