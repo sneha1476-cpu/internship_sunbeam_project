@@ -9,15 +9,22 @@ import sun_class from '../assets/sunbeam_class.jpg'
 function About() {
   return (
     <>
-      <Navbar />
 
       {/* Hero Section */}
-      <div className="bg-dark text-white text-center py-5">
-        <h1 className="fw-bold">About Sunbeam Institute</h1>
-        <p className="lead">
-          Empowering Careers with Industry-Focused Training
-        </p>
-      </div>
+     {/* Hero Section */}
+<div
+  className="text-white text-center"
+  style={{
+    background: "linear-gradient(135deg, #1e40af, #475569)", // same family as Home
+    padding: "3.5rem 1rem" // slightly smaller than Home
+  }}
+>
+  <h1 className="fw-bold mb-2">About Sunbeam Institute</h1>
+  <p className="fs-6 text-light">
+    Empowering Careers with Industry-Focused Training
+  </p>
+</div>
+
 
       {/* Campus Showcase Section */}
 <div className="container my-5">

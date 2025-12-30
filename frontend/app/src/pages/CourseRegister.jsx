@@ -1,6 +1,3 @@
-
-
-
 // import React, { useState } from 'react'
 // import { toast } from 'react-toastify'
 // import { registerCourse } from '../services/userServices'
@@ -105,26 +102,26 @@
 
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
-import { registerUser } from '../services/userServices'
+import { registerCourse } from '../services/studentServices'
 import { Link, useNavigate } from 'react-router'
 import Navbar from '../components/Navbar'
 
-function Register() {
-  // const [course_id, setCourseId] = useState('')
+function CourseRegister() {
+  const [course_id, setCourseId] = useState('')
   const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [role, setRole] = useState('')
+  const [name, setName] = useState('')
+  const [mobile_no, setMobileNo] = useState('')
   const navigate = useNavigate()
 
   const register = async () => {
-    
-    if (email === '') toast.warn('Email must be entered')
-    else if (password === '') toast.warn('password must be entered')
-    else if (role === '') toast.warn('Role must be entered')
+    if (course_id === '') toast.warn('Course ID must be entered')
+    else if (email === '') toast.warn('Email must be entered')
+    else if (name === '') toast.warn('Name must be entered')
+    else if (mobile_no === '') toast.warn('Mobile number must be entered')
     else {
-      const result = await registerUser( email, password,role)
+      const result = await registerCourse(name, email, course_id, mobile_no)
       if (result.status === 'success') {
-        navigate('/login')
+        navigate('/mycourse')
         toast.success('Successfully registered to course')
       } else toast.error(result.data)
     }
@@ -153,7 +150,7 @@ function Register() {
           >
             <h3 className="text-center mb-4 fw-bold text-primary">Register</h3>
 
-            {/* <div className="mb-3">
+            <div className="mb-3">
               <label htmlFor="course_id" className="form-label fw-semibold">
                 Course ID
               </label>
@@ -164,7 +161,7 @@ function Register() {
                 placeholder="Enter course ID"
                 onChange={e => setCourseId(e.target.value)}
               />
-            </div> */}
+            </div>
 
             <div className="mb-3">
               <label htmlFor="email" className="form-label fw-semibold">
@@ -181,33 +178,29 @@ function Register() {
 
             <div className="mb-3">
               <label htmlFor="name" className="form-label fw-semibold">
-                Password
+                Name
               </label>
               <input
-                type="password"
+                type="text"
                 className="form-control border-primary"
                 id="name"
-                placeholder="******"
-                onChange={e => setPassword(e.target.value)}
+                placeholder="Enter your name"
+                onChange={e => setName(e.target.value)}
               />
             </div>
 
-           <div className="mb-4">
-  <label htmlFor="role" className="form-label fw-semibold">
-    Role
-  </label>
-  <select
-    className="form-control border-primary"
-    id="role"
-    value={role}
-    onChange={(e) => setRole(e.target.value)}
-  >
-    <option value="">Select Role</option>
-    <option value="STUDENT">Student</option>
-    <option value="ADMIN">Admin</option>
-  </select>
-</div>
-
+            <div className="mb-4">
+              <label htmlFor="mobile_no" className="form-label fw-semibold">
+                Mobile Number
+              </label>
+              <input
+                type="tel"
+                className="form-control border-primary"
+                id="mobile_no"
+                placeholder="Enter mobile number"
+                onChange={e => setMobileNo(e.target.value)}
+              />
+            </div>
 
             <div className="d-grid mb-3">
               <button
@@ -234,4 +227,4 @@ function Register() {
   )
 }
 
-export default Register
+export default CourseRegister

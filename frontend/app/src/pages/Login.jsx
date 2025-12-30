@@ -1,139 +1,121 @@
-import React, { useState } from 'react'
+
+import React, { useContext, useState } from 'react'
 import Navbar from '../components/Navbar'
-import {Link, useNavigate} from 'react-router'
-import {toast} from 'react-toastify'
+import { Link, useNavigate } from 'react-router'
+import { toast } from 'react-toastify'
 import { loginUser } from '../services/userServices'
+import { LoginContext } from "../App"
+ import { jwtDecode } from "jwt-decode";
 
 
 function Login() {
-    const [email,setEmail]=useState('')
-    const [password,setPassword]=useState('')
-    const navigate=useNavigate()
- 
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const navigate = useNavigate()
+  const { loginStatus, setLoginStatus } = useContext(LoginContext)
 
-     const login = async (event) => {
-        console.log('Sign in button clicked')
-        console.log(`email - ${email}`)
-        console.log(`password - ${password}`)
-        if (email == '')
-            toast.warn('email must be entered')
-        else if (password == '')
-            toast.warn('password must be entered')
-        else {
-            const result = await loginUser(email, password)
-            console.log(result)
-            if (result.status == 'success') {
-              console.log("login")
-                // dynamic navigation -> useNavigate()
-                navigate('/home')
-                
-                toast.success('Login successful')
-            }
-            else
-                toast.error(result.error)
+  const login = async () => {
+    if (email === '') {
+      toast.warn('Email must be entered')
+    } else if (password === '') {
+      toast.warn('Password must be entered')
+    } else {
+      const result = await loginUser(email, password)
+    
+        if (result.status === "success") {
+          const token = result.data.token;
+
+          const decoded = jwtDecode(token);
+       
+
+          sessionStorage.setItem("token", token);
+          sessionStorage.setItem("email", decoded.email);
+          sessionStorage.setItem("role", decoded.role);
+
+          setLoginStatus(true);
+          navigate("/");
         }
-    }    
-  
-  
+ else {
+        toast.error(result.data)
+      }
+    }
+  }
 
   return (
-       <>
-       <Navbar/>
+    <>
+      <Navbar />
 
-    <div className="container-fluid pt-2">
-  <div className="row justify-content-center mt-4">
-    <div className="col-md-5 col-lg-4">
+      {/* Full-page gradient background */}
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{
+          minHeight: '100vh',
+          paddingTop: '100px', // space for fixed navbar
+          background: 'linear-gradient(135deg, #6610f2, #0d6efd)',
+        }}
+      >
+        <div className="col-md-5 col-lg-4">
 
-      <div className="card shadow p-4">
-        <h3 className="text-center mb-3">Login</h3>
+          <div
+            className="card shadow-lg p-5"
+            style={{
+              borderRadius: '1rem',
+              background: '#fff',
+              transition: '0.3s',
+            }}
+          >
+            <h3 className="text-center mb-4 fw-bold text-primary">Login</h3>
 
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
-          <input type="email" className="form-control" id="email" placeholder="enter email" onChange={e=>setEmail(e.target.value)}/>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label fw-semibold">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="form-control border-primary"
+                id="email"
+                placeholder="Enter your email"
+                onChange={e => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="mb-4">
+              <label htmlFor="password" className="form-label fw-semibold">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control border-primary"
+                id="password"
+                placeholder="Enter your password"
+                onChange={e => setPassword(e.target.value)}
+              />
+            </div>
+
+            <div className="d-grid mb-3">
+              <button
+                className="btn btn-primary btn-lg fw-semibold"
+                onClick={login}
+                style={{ transition: '0.3s' }}
+                onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
+                onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+              >
+                Login
+              </button>
+            </div>
+
+            <div className="text-center mt-2">
+              <span className="text-muted">Don't have an account? </span>
+              <Link to="/register" className="fw-semibold text-primary">
+                Register here
+              </Link>
+            </div>
+          </div>
+
         </div>
-
-        <div className="mb-4">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input type="password" className="form-control" id="password" placeholder="enter password" onChange={e=>setPassword(e.target.value)} />
-        </div>
-
-        <div className="d-grid">
-          <button className="btn btn-info text-white" onClick={login}> Login</button>
-        </div>
-
       </div>
-
-    </div>
-  </div>
-</div>
-
     </>
-
-
   )
 }
 
 export default Login
-
-
-//  import React, { useState } from 'react'
-// import { Link, useNavigate } from 'react-router'
-// import { loginUser } from '../services/userServices'
-// import { toast } from 'react-toastify'
-
-// function Login() {
-//     // Destructuring of array
-//     const [email, setEmail] = useState('') // email
-//     const [password, setPassword] = useState('')// password
-//     const navigate = useNavigate()
-
-//     const signin = async (event) => {
-//         console.log('Sign in button clicked')
-//         console.log(`email - ${email}`)
-//         console.log(`password - ${password}`)
-//         if (email == '')
-//             toast.warn('email must be entered')
-//         else if (password == '')
-//             toast.warn('password must be entered')
-//         else {
-//             const result = await loginUser(email, password)
-//             console.log(result)
-//             if (result.status == 'sucess') {
-//               sessionStorage.setItem('token', result.data.token)
-//                 // dynamic navigation -> useNavigate()
-//                 navigate('/home')
-//                 toast.success('Login successful')
-//             }
-//             else
-//                 toast.error(result.error)
-//         }
-//     }
-
-//     return (
-//         <div className='container w-50'>
-//             <div className=" mt-3 mb-3">
-//                 <label for="inputEmail" className="form-label">Email</label>
-//                 <input type="email" className="form-control" id="inputEmail" placeholder="Enter email" onChange={event => setEmail(event.target.value)} />
-//             </div>
-
-//             <div className="mb-3">
-//                 <label for="inputPassword" className="form-label">Password</label>
-//                 <input type="password" className="form-control" id="inputPassword" placeholder="Enter password" onChange={e => setPassword(e.target.value)} />
-//             </div>
-
-//             <div className="mb-3">
-//                 <button className="btn btn-success" onClick={signin}>Signin</button>
-//             </div>
-
-//             <div>
-//                 Don't have an account? then to register <Link to='/register' >Click Here</Link>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default Login
