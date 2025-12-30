@@ -14,6 +14,7 @@ function MyCourses() {
     const result = await getMyCourses()
     if (result.status === "success") {
       setCourses(result.data)
+      
     }
   }
 

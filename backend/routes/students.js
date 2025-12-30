@@ -42,10 +42,10 @@ router.post("/register",(req, res) => {
 router.put("/change_password",(req,res)=>{
     const { newPassword, confirmPassword } = req.body
     const email=req.headers.email
-    if(newPassword.length>8)
-    {
-        res.send(result.createResult("Password should be 8 of characters "))
-    }
+    // if(newPassword.length>8)
+    // {
+    //     res.send(result.createResult("Password should be 8 of characters "))
+    // }
     if (newPassword !== confirmPassword) {
         res.send(result.createResult("Passwords do not match"))
     } else {

@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { createContext, useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -16,6 +16,7 @@ import EditCourse from "./pages/EditCourse";
 import { ToastContainer } from "react-toastify";
 import AddVideo from "./pages/AddVideo";
 import EditVideo from "./pages/EditVideo";
+import ChangePassword from "./pages/ChangePassword";
 
 export const LoginContext = createContext();
 
@@ -40,6 +41,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={!loginStatus ? <Login /> : <Navigate to="/home" />} />
         <Route path="/register" element={<Register />} />
+        
+   
+<Route path='/change-password/' element={loginStatus?<ChangePassword/>:<Navigate to='/login' replace/>}/>
+
 
         {/* Student */}
         {loginStatus && userRole === "student" && (
@@ -63,7 +68,7 @@ function App() {
 
           </>
         )}
-
+       
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
 
