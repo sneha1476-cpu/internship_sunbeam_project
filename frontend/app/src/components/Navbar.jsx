@@ -1,58 +1,92 @@
 
 
-import React from 'react'
-import { Link } from 'react-router'
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router";
+import { LoginContext } from "../App";
 
 function Navbar() {
+  const { loginStatus, setLoginStatus } = useContext(LoginContext);
+  const navigate = useNavigate();
+
+  const userEmail = sessionStorage.getItem("email");
+  const userRole=sessionStorage.getItem('role')
+
+  const handleLogout = () => {
+    sessionStorage.clear();
+    setLoginStatus(false);
+    navigate("/login");
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg bg-info px-4">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 fixed-top">
       <div className="container-fluid">
-        
-        {/* Left: Brand */}
-        <Link className="navbar-brand fw-bold text-white" to="/">
-          Student Portal
+        <Link className="navbar-brand fw-bold" to="/home">
+          {userRole === "admin" ? "Admin Portal" : "Student Portal"}
         </Link>
-
-        {/* Toggle button (mobile) */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
+{/* 
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span className="navbar-toggler-icon"></span>
-        </button>
+        </button> */}
 
-        {/* Navbar links */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          
-          {/* Middle: Links */}
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto">
             <li className="nav-item">
-              <Link className="nav-link text-white" to="/home">
-                Home
-              </Link>
+              <Link className="nav-link" to="/about">About</Link>
             </li>
 
-            <li className="nav-item">
-              <Link className="nav-link text-white" to="/about">
-                About
-              </Link>
-            </li>
+            {userRole === "student" && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/courses">All Courses</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/mycourse">My Courses</Link>
+                </li>
+              </>
+            )}
+
+            {userRole === "admin" && (
+              <>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/manage-courses">Manage Courses</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/manage-videos">Manage Videos</Link>
+                </li>
+              </>
+            )}
           </ul>
 
-          {/* Right: Login button */}
-          <div>
-            <Link to="/login" className="btn btn-outline-light">
+          {/* RIGHT SIDE */}
+          {loginStatus ? (
+            <div className="dropdown">
+              <button className="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" style={{color:"white", backgroundColor:"black"}} >
+                {userEmail}
+              </button>
+
+              <ul className="dropdown-menu dropdown-menu-end">
+                <li>
+                  <Link className="dropdown-item" to="/change-password">
+                    Change Password
+                  </Link>
+                </li>
+                <li><hr className="dropdown-divider" /></li>
+                <li>
+                  <button className="dropdown-item text-danger" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link className="btn btn-outline-light" to="/login">
               Login
             </Link>
-          </div>
-
+          )}
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
-export default Navbar
-
+export default Navbar;

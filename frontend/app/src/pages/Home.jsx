@@ -1,11 +1,12 @@
-import Header from "../components/Header";
-import Body from "../components/Body";
+import React from "react"
+import { useNavigate } from "react-router"
 
-const Home = () => {
+function Home() {
+  const navigate = useNavigate()
+
   return (
     <>
-      <Header />
-          {/* HERO SECTION */}<section className="text-white" style={{
+      {/* HERO SECTION */}<section className="text-white" style={{
   background: "linear-gradient(135deg, #0a4178, #3b2789)",
   minHeight: "75vh",
   display: "flex",
@@ -63,8 +64,9 @@ const Home = () => {
     </div>
   </div>
 </section>
-      <Body />
-      
+
+
+
       {/* FEATURES SECTION */}
       <section className="container my-5">
         <h2 className="text-center fw-bold mb-5">
@@ -164,7 +166,7 @@ const Home = () => {
         © {new Date().getFullYear()} Sunbeam Institute | Student Portal
       </footer>
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
