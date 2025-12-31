@@ -33,16 +33,33 @@ export default function Videos() {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="d-flex justify-content-between mb-4">
+    <div style={{backgroundColor:"#d9d9d9"}}>
+
+
+   
+    {/* <div className="container mt-5" style={{backgroundColor:"#d9d9d9"}}>
+      <div>
         <h3 className="text-primary">Videos</h3>
         <button
-          className="btn btn-primary"
+          className="btn btn-primary  position-absolute end-0 top-50 translate-middle-y"
           onClick={() => navigate("/add-video")}
         >
           + Add Video
         </button>
-      </div>
+      </div> */}
+       <div className="mt-5" style={{ backgroundColor: "#d9d9d9" }}>
+        <div className="position-relative mb-4 mt-3 text-center">
+          <h3 className="text-primary">Videos</h3>
+
+          <button
+            className="btn btn-primary position-absolute end-0 top-50 translate-middle-y"
+            onClick={() => navigate("/add-video")}
+          >
+            + Add Video
+          </button>
+        </div>
+        </div>
+
 
       <div className="row">
         {videos.map((v) => (
@@ -84,5 +101,6 @@ export default function Videos() {
         ))}
       </div>
     </div>
+    //  </div>
   );
 }
