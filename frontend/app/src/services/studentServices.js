@@ -12,6 +12,8 @@ export async function getMyCourses() {
     }
   )
 
+
+
   return response.data
 }
 export async function registerCourse(name, email, course_id, mobile_no) {
@@ -23,7 +25,7 @@ export async function registerCourse(name, email, course_id, mobile_no) {
 
   const response = await axios.post(URL,body,{
       headers: {
-        token: token   // 👈 THIS IS THE KEY FIX
+        token: token  
       }
     }
   );
@@ -58,3 +60,4 @@ export async function ChangePWD(newpassword,confirmpassword){
   })
   return response.data
 }
+
