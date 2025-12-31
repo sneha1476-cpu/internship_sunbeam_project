@@ -15,7 +15,7 @@ function About() {
 <div
   className="text-white text-center"
   style={{
-    background: "linear-gradient(135deg, #1e40af, #475569)", // same family as Home
+    background: "linear-gradient(135deg, #1f696dff, #329fa1ff)", // same family as Home
     padding: "3.5rem 1rem" // slightly smaller than Home
   }}
 >
@@ -26,8 +26,10 @@ function About() {
 </div>
 
 
+<div style={{backgroundColor:"#D9D9D9"}}>
+
       {/* Campus Showcase Section */}
-<div className="container my-5">
+<div className="container">
   <div className="row g-3 align-items-stretch">
 
     {/* Left Large Image */}
@@ -90,7 +92,7 @@ function About() {
       {/* About Content */}
       <div className="container mb-5">
         <div className="row mb-4">
-          <div className="col text-center">
+          <div className="col text-center text-black">
             <h2 className="fw-bold">Who We Are</h2>
             <p className="text-muted mt-3">
               Sunbeam Institute is a premier training organization focused on
@@ -165,6 +167,7 @@ function About() {
           © 2025 Sunbeam Institute | All Rights Reserved
         </p>
       </footer>
+      </div>
     </>
   )
 }

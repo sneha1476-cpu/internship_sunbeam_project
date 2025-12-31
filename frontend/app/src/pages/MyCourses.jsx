@@ -22,7 +22,7 @@ function MyCourses() {
     <>
       <Navbar />
 
-      <div className="container" style={{ paddingTop: "100px" }}>
+      <div style={{ paddingTop: "100px", backgroundColor:"#d9d9d9" }}>
         <h2 className="text-center fw-bold text-primary mb-5">
           My Enrolled Courses
         </h2>

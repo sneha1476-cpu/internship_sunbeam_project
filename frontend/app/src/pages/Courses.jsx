@@ -19,9 +19,8 @@ function Courses() {
       setCourses(result.data);
     }
   };
-
   return (
-    <div className="container mt-5 pt-4">
+    <div className="mt-5 pt-4"style={{backgroundColor:"#d9d9d9"}} >
 
       {/* Page Title */}
       <h2

@@ -1,24 +1,31 @@
 import React from "react"
 import { Link, useNavigate } from "react-router-dom"
+    
 
 function Home() {
   const navigate = useNavigate()
 
   return (
     <>
-      {/* HERO SECTION */}<section className="text-white" style={{
-  background: "linear-gradient(135deg, #0a4178, #3b2789)",
-  minHeight: "75vh",
-  display: "flex",
-  alignItems: "center"
-}}>
+<section
+  className="text-white"
+  style={{
+    background: "linear-gradient(135deg, #19525cff, #1e8096ff)", // light to your accent color
+    minHeight: "75vh",
+    display: "flex",
+    alignItems: "center",
+  }}
+>
+
+
   <div className="container">
     <div className="row align-items-center">
 
       {/* Left Text */}
       <div className="col-md-6">
         <h1 className="display-5 fw-bold mb-3">
-          Welcome to <span className="text-warning">Sunbeam Institute</span>
+          Welcome to Sunbeam Institute
+
         </h1>
         <p className="lead mb-4">
           Achieve your tech career goals with expert teaching & industry‑relevant training.
@@ -42,9 +49,18 @@ function Home() {
 
         {/* Buttons */}
         <div className="d-flex gap-2">
-          <Link to="/login" className="btn btn-warning btn-lg fw-semibold">
-            Get Started
-          </Link>
+         <Link 
+  to="/login" 
+  className="btn btn-lg fw-semibold" 
+  style={{ 
+    backgroundColor: "#176677ff",  // darker accent blue
+    color: "white",
+    border: "none"
+  }}
+>
+  Get Started
+</Link>
+
           <Link to="/about" className="btn btn-outline-light btn-lg fw-semibold">
             Explore
           </Link>
@@ -52,14 +68,17 @@ function Home() {
       </div>
 
       {/* Hero Image */}
-      <div className="col-md-6 text-center">
-        <img
-          src="https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Students Learning"
-          className="img-fluid rounded shadow"
-          style={{ maxHeight: "350px" }}
-        />
-      </div>
+
+
+<div className="col-md-6 text-center">
+  <img
+   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCKIR4YCwVE7y9T-4mdj7WypG0JztPaekLZB-dlJAjwIBJx1mK"
+    alt="Students Learning"
+    className="img-fluid rounded shadow"
+    style={{ maxHeight: "350px", width:'100%' }}
+  />
+</div>
+
 
     </div>
   </div>
@@ -153,12 +172,24 @@ function Home() {
         <p className="fs-5 mt-3">
           Join Sunbeam and transform your potential into success.
         </p>
-        <button
+                  <Link 
+            to="/login" 
+            className="btn btn-lg fw-semibold" 
+            style={{ 
+              backgroundColor: "#00a8cc",  // darker accent blue
+              color: "white",
+              border: "none"
+            }}
+          >
+            Join Now!
+          </Link>
+
+        {/* <button
           className="btn btn-warning btn-lg mt-3"
           onClick={() => navigate("/login")}
         >
           Join Now
-        </button>
+        </button> */}
       </section>
 
       {/* FOOTER */}

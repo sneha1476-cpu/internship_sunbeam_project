@@ -50,8 +50,8 @@ function Login() {
         className="d-flex justify-content-center align-items-center"
         style={{
           minHeight: '100vh',
-          paddingTop: '100px', // space for fixed navbar
-          background: 'linear-gradient(135deg, #6610f2, #0d6efd)',
+          paddingTop: '100px', // for fixed navbar
+          background: 'linear-gradient(135deg, #0d6efd, #6610f2)',
         }}
       >
         <div className="col-md-5 col-lg-4">
