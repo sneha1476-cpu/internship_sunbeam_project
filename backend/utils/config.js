@@ -1,3 +1,2 @@
- const SECRET="dajnciksdvnlsfioevniszckvsnzkcsjfzvdknvlswknvls"
-
- module.exports={SECRET}
+const secret="qwertyuiopasdfghjklzxcvbnm"
+module.exports={secret}

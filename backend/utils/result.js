@@ -1,14 +1,15 @@
-function createResult(error,data){
-    const result={}
+
+
+function createResult(err,data){
+    result={}
     if(data){
         result.status="success"
         result.data=data
     }
     else{
         result.status="error"
-        result.error=error
-    }
-    return result
+        result.data=err
+   }
+   return result
 }
-
 module.exports={createResult}
